@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductList from '../components/ProductList'
 
 class ProductController extends React.Component {
     constructor(props) {

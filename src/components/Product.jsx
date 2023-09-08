@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 
-
 function Product(props) {
     return <div className="product-listing" onClick={() => props.onSelect(props.id)}>
         <span>{props.name}</span>

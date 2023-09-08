@@ -10,7 +10,6 @@ class ProductController extends React.Component {
         }
     }
 
-    setPage = (page) => this.setState({ page })
     addProduct(product) {
         const list = this.state.productList.concat(product);
         this.setState({
@@ -49,13 +48,19 @@ class ProductController extends React.Component {
                     <AddProductForm onSubmit={this.addProduct} />
                 </React.Fragment>
             case 'view':
-                return <React.Fragment></React.Fragment>
+                return <React.Fragment>
+                    <ProductDetails product={this.state.selectedProduct} />
+                </React.Fragment>
             case 'edit':
                 return <React.Fragment>
-                    <EditProductForm product={this.state.selectedProduct} />
+                    <EditProductForm product={this.state.selectedProduct} onSubmit={this.editProduct} />
                 </React.Fragment>
             default:
-                return <React.Fragment></React.Fragment>
+                return <React.Fragment>
+                    <ProductList productList={this.state.productList} onSelect={this.selectProduct} />
+                </React.Fragment>
         }
     }
 }
+
+export default ProductController;

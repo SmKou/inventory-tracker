@@ -34,6 +34,21 @@ Inventory Tracker is a React app for managing the inventory of a coffee beans ve
 
 ![App Design](./App-design.png)
 
+**App**
+- ProductList
+  - Product -> [selectProduct] ProductDetails
+  - Sell product [sellProduct]
+  - Add product [goToAdd] -> AddProductForm
+- ProductDetails
+  - Sell product [sellProduct]
+  - Edit product [goToEdit] -> EditProductForm
+  - Delete product -> [deleteProduct] ProductList
+  - Return [goToList] -> ProductList
+- AddProductForm
+  - [submit] -> [addProduct] ProductList
+- EditProductForm
+  - [submit] -> [editProduct] ProductList
+
 ## Complete Setup
 
 ## Known Bugs

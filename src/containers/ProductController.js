@@ -10,16 +10,11 @@ class ProductController extends React.Component {
         }
     }
 
-    setPage = (page) => this.setState({ page })
-    decrementProduct = (id, n) => {
-        const product = this.state.productList.filter(product => product.id === id)[0];
-        if (n > product.quantity)
-            return 0;
-        product.quantity -= n;
-        const list = this.state.productList.filter(product => product.id !== id).concat(product);
-        this.setState({ productList: list })
-        return 1;
+    goToList = () => this.setState({ page: 'list' })
+    sellProduct(product, n) {
+
     }
+    goToAdd = () => this.setState({ page: 'add' })
     addProduct(product) {
         const list = this.state.productList.concat(product);
         this.setState({
@@ -34,6 +29,7 @@ class ProductController extends React.Component {
             page: 'view'
         })
     }
+    goToEdit = () => this.setState({ page: 'edit' })
     editProduct(product) {
         const { productList, selectedProduct } = this.state;
         const list = productList.filter(product => product.id !== selectedProduct.id).concat(product);
@@ -55,22 +51,37 @@ class ProductController extends React.Component {
         switch (this.state.page) {
             case 'add':
                 return <React.Fragment>
-                    <AddProductForm onSubmit={this.addProduct} />
+                    <AddProductForm
+                        addProduct={this.addProduct}
+                        return={this.goToList}
+                    />
                 </React.Fragment>
             case 'view':
                 return <React.Fragment>
-                    <ProductDetails product={this.state.selectedProduct} />
+                    <ProductDetails
+                        product={this.state.selectedProduct}
+                        sellProduct={this.sellProduct}
+                        deleteProduct={this.deleteProduct}
+                        goToEdit={this.goToEdit}
+                        return={this.goToList}
+                    />
                 </React.Fragment>
             case 'edit':
                 return <React.Fragment>
-                    <EditProductForm product={this.state.selectedProduct} onSubmit={this.editProduct} />
+                    <EditProductForm
+                        product={this.state.selectedProduct}
+                        editProduct={this.editProduct}
+                        return={this.goToList}
+                    />
                 </React.Fragment>
             default:
                 return <React.Fragment>
-                    <button className="add-btn" onClick={() => {
-                        this.setState({page: 'add'})
-                    }}>+</button>
-                    <ProductList productList={this.state.productList} onSelect={this.selectProduct} onSellProduct={this.decrementProduct} />
+                    <ProductList
+                        productList={this.state.productList}
+                        sellProduct={this.sellProduct}
+                        selectProduct={this.selectProduct}
+                        goToAdd={this.goToAdd}
+                    />
                 </React.Fragment>
         }
     }

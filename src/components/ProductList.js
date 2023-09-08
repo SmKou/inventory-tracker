@@ -4,6 +4,7 @@ import Product from './Product'
 function ProductList(props) {
     return <section className="product-list">
         <Product
+            onPress={props.goToAdd}
             name="Product Name"
             origin="Origin"
             roast="Roast"
@@ -13,13 +14,13 @@ function ProductList(props) {
             key="product-header"
         />
         {props.productList.map((product) => <Product
-            onSelect={props.onSelect}
-            onSubmit={props.onSellProduct}
+            onSelect={props.selectProduct}
+            onSubmit={props.sellProduct}
             name={product.name}
             origin={product.origin}
             roast={product.roast}
             type={product.type}
-            quantity={product.qty}
+            quantity={product.quantity}
             price={product.price}
             id={product.id}
             key={product.id}
@@ -29,8 +30,9 @@ function ProductList(props) {
 
 ProductList.propTypes = {
     productList: PropTypes.array,
-    onSelect: PropTypes.func,
-    onSellProduct: PropTypes.func
+    sellProduct: PropTypes.func,
+    selectProduct: PropTypes.func,
+    goToAdd: PropTypes.func
 }
 
 export default ProductList;

@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function Product(props) { 
-    const handleDecrementSubmit = (e) => {
-        e.preventDefault();
-        const data = new FormData(e.target);
-        const decrement = data["decrement"];
-        props.onSellProduct()
-    }
-
+function Product(props) {
     return <div className="product-listing" onClick={() => props.onSelect(props.id)}>
         <span>{props.name}</span>
         <span className="optional-listing">{props.origin}</span>
@@ -19,7 +12,7 @@ function Product(props) {
             : "Out of stock"
         }</span>
         <span>{props.price > 0 ? '$' + props.price : "Not available"}</span>
-        <form onSubmit={ }>
+        <form>
             <input name="decrement" type="number" defaultValue="1" />
             <input type="submit" value="sell" />
         </form>

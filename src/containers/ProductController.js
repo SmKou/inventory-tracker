@@ -10,6 +10,16 @@ class ProductController extends React.Component {
         }
     }
 
+    setPage = (page) => this.setState({ page })
+    decrementProduct = (id, n) => {
+        const product = this.state.productList.filter(product => product.id === id)[0];
+        if (n > product.quantity)
+            return 0;
+        product.quantity -= n;
+        const list = this.state.productList.filter(product => product.id !== id).concat(product);
+        this.setState({ productList: list })
+        return 1;
+    }
     addProduct(product) {
         const list = this.state.productList.concat(product);
         this.setState({
@@ -57,7 +67,10 @@ class ProductController extends React.Component {
                 </React.Fragment>
             default:
                 return <React.Fragment>
-                    <ProductList productList={this.state.productList} onSelect={this.selectProduct} />
+                    <button className="add-btn" onClick={() => {
+                        this.setState({page: 'add'})
+                    }}>+</button>
+                    <ProductList productList={this.state.productList} onSelect={this.selectProduct} onSellProduct={this.decrementProduct} />
                 </React.Fragment>
         }
     }

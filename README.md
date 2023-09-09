@@ -5,6 +5,8 @@ By: Stella Marie
 ## Technologies Used
 
 - React
+  - prop types
+  - uuid
 - Scaffolded with Vite
 
 ## Description
@@ -51,7 +53,35 @@ Inventory Tracker is a React app for managing the inventory of a coffee beans ve
 
 ## Complete Setup
 
+This project will not be accepting pull requests, but you may fork the project for your own use.
+
+- Fork or clone project
+- Run ```npm i``` to install dependencies
+- Run ```npm run preview```
+
+If project does not open in a browser, there will be a link in the terminal: Ctrl + Click
+
+To keep your forked repo up to date with any updates I make to the repo, use: 
+
+```bash
+git remote add upstream repo_url.git
+```
+
+If you find that you need to remove the upstream, use:
+
+```bash
+git remote rm upstream
+```
+
+However, I suggest checking that there is an upstream first with:
+
+```bash
+git remote -v
+```
+
 ## Known Bugs
+
+- Inconsistent styling (use Tailwind and/or Styled Components)
 
 ## License
 

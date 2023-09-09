@@ -1,5 +1,4 @@
 import React from 'react';
-import { useContext } from 'react'
 import Store from '../containers/Store'
 import Valid from '../containers/Valid'
 import ProductList from '../components/ProductList'
@@ -12,24 +11,32 @@ class ProductController extends React.Component {
         super(props);
         this.state = {
             page: 'list',
-            productList: Store(),
+            productList: [...Store()],
             selectedProduct: null
         }
+
+        
+        this.sellProduct = this.sellProduct.bind(this);
+        this.addProduct = this.addProduct.bind(this);
+        this.selectProduct = this.selectProduct.bind(this);
+        this.editProduct = this.editProduct.bind(this);
+        this.deleteProduct = this.deleteProduct.bind(this);
     }
 
     goToList = () => this.setState({ page: 'list' })
     sellProduct(id, n) {
-        const product = this.state.productList.filter(product => product.id === id)[0];
+        console.log("amount", n);
+        const { productList } = this.state;
+        const index = productList.findIndex(product => product.id === id);
+        const product = productList[index];
         const validCheck = Valid.sellable(product.quantity, n);
         if (validCheck.status) {
-            product.quantity -= n;
-            const list = this.state.productList.filter(product => product.id !== id).concat(product);
-            this.setState({ productList: list })
-            return {
+            productList[index].quantity -= n;
+            this.props.relayMessage({
                 ...validCheck,
                 success: "Product sold",
-                message: `${product.name} sold for ${product.price * n} USD. Sold ${n} lbs.`
-            }
+                message: `Sold ${n} lb${n > 1 ? 's' : ''} of ${product.name} for $${product.price * n}.`
+            });
         }
         else
             this.props.relayMessage(validCheck);

@@ -2,9 +2,11 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 
 function ProductList(props) {
-    return <section className="product-list">
+    console.log(props.productList);
+    return <section>
+        <button className="add-btn" onClick={props.goToAdd}>Add a Coffee</button>
         <Product
-            onPress={props.goToAdd}
+            goToAdd={props.goToAdd}
             name="Product Name"
             plant="Plant"
             origin="Origin"
@@ -12,11 +14,12 @@ function ProductList(props) {
             type="Type"
             quantity={-1}
             price={-1}
+            id="product-header"
             key="product-header"
         />
         {props.productList.map((product) => <Product
-            onSelect={props.selectProduct}
-            onSubmit={props.sellProduct}
+            selectProduct={props.selectProduct}
+            sellProduct={props.sellProduct}
             name={product.name}
             plant={product.plant}
             origin={product.origin}
@@ -31,10 +34,10 @@ function ProductList(props) {
 }
 
 ProductList.propTypes = {
-    productList: PropTypes.array,
-    sellProduct: PropTypes.func,
-    selectProduct: PropTypes.func,
-    goToAdd: PropTypes.func
+    productList: PropTypes.array.isRequired,
+    sellProduct: PropTypes.func.isRequired,
+    selectProduct: PropTypes.func.isRequired,
+    goToAdd: PropTypes.func.isRequired
 }
 
 export default ProductList;

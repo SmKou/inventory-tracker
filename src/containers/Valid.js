@@ -1,6 +1,6 @@
 const Valid = {
     sellable: (qty, n) => {
-        if (n > 1)
+        if (n < 1)
             return {
                 status: false,
                 error: "Invalid Quantity",

@@ -6,6 +6,7 @@ function ProductList(props) {
         <Product
             onPress={props.goToAdd}
             name="Product Name"
+            plant="Plant"
             origin="Origin"
             roast="Roast"
             type="Type"
@@ -17,6 +18,7 @@ function ProductList(props) {
             onSelect={props.selectProduct}
             onSubmit={props.sellProduct}
             name={product.name}
+            plant={product.plant}
             origin={product.origin}
             roast={product.roast}
             type={product.type}

@@ -54,7 +54,10 @@ const Valid = {
         }
     },
     custom: function (params) {
-        const aggregate = {}
+        const aggregateErrors = {
+            status: false,
+            aggregate: []
+        }
         for (const key of params.func)
             if (key === "custom")
                 return {
@@ -65,15 +68,13 @@ const Valid = {
             else {
                 const validCheck = this[key](...params.ipt[key]);
                 if (!validCheck.status)
-                    aggregate = {
-                        ...aggregate,
-                        ...validCheck
-                    }
+                    aggregateErrors.aggregate.push(validCheck)
+                    
             }
-        if (Object.keys(aggregate).length === 0)
+        if (aggregateErrors.aggregate.length === 0)
             return { status: true }
         else
-            return aggregate;
+            return aggregateErrors;
     }
 }
 

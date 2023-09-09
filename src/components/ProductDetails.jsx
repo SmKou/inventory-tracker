@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Styles from '../assets/Styles'
 import '../assets/ProductDetails.css'
+import ButtonNavigation from './ButtonNavigation'
 
 const sellButtonStyle = () => ({
     ...Styles.sellProduct.button,
@@ -17,9 +18,11 @@ function ProductDetails(props) {
     const [input, setInput] = useState(1);
     const { product } = props;
     return <section>
-        <div style={Styles.btnNavigation.div}>
-            <button style={Styles.btnNavigation.button} onClick={props.goToList}>Back to List</button>
-        </div>
+        <ButtonNavigation buttons={[
+            { buttonText: "Back to List", handleClick: props.goToList },
+            { buttonText: "Edit Details", handleClick: props.goToEdit },
+            { buttonText: "Delete Product", handleClick: () => props.deleteProduct(product.id)}
+        ]} />
         <h2>{product.name}</h2>
         <table>
             <tbody>
@@ -57,8 +60,6 @@ function ProductDetails(props) {
                         <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
                         <button style={sellButtonStyle()} onClick={e => props.sellProduct(product.id, input)}>sell</button>
                     </td>
-                    <td><button onClick={props.goToEdit}>Edit Details</button></td>
-                    <td><button onClick={() => props.deleteProduct(product.id)}>Delete Product</button></td>
                 </tr>
             </tfoot>
         </table>

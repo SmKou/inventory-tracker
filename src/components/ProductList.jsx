@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 import Styles from '../assets/Styles'
+import ButtonNavigation from './ButtonNavigation'
 import Product from './Product'
 
 function ProductList(props) {
     return <section>
-        <div style={Styles.btnNavigation.div}>
-            <button style={Styles.btnNavigation.button} onClick={props.goToAdd}>Add a Coffee</button>
-        </div>
+        <ButtonNavigation buttons={[{
+            buttonText: "Add a Coffee",
+            handleClick: props.goToAdd
+        }]} />
         <Product
             goToAdd={props.goToAdd}
             name="Product Name"

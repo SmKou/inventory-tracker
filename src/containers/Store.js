@@ -1,6 +1,41 @@
 import { v4 } from 'uuid';
 
-export default function Store() {
+const Store = {
+    plant: [
+        "Arabica",
+        "Robusta",
+        "Liberica",
+        "Excelsa",
+        "Arabica & Robusta"
+    ],
+    roast: [
+        "Cinnamon Roast",
+        "Blonde Roast",
+        "New England Roast",
+        "Half City Roast",
+        "American Roast",
+        "City Roast",
+        "Breakfast Roast",
+        "Full City Roast",
+        "Continental Roast",
+        "High Roast",
+        "New Orleans Roast",
+        "Viennese Roast",
+        "European Roast",
+        "French Roast",
+        "Italian Roast"
+    ],
+    type: [
+        "Light",
+        "Light-Medium",
+        "Medium",
+        "Medium-Dark",
+        "Dark"
+    ],
+    load: store
+}
+
+function store() {
     return [
         {
             name: 'Towstump',
@@ -154,3 +189,5 @@ export default function Store() {
         }
     ];
 }
+
+export default Store;

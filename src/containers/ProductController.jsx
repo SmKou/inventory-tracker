@@ -11,7 +11,7 @@ class ProductController extends React.Component {
         super(props);
         this.state = {
             page: 'list',
-            productList: [...Store()],
+            productList: [...Store.load()],
             selectedProduct: null
         }
         this.props.relayMessage({});
@@ -59,8 +59,10 @@ class ProductController extends React.Component {
                 page: 'list'
             })
         }
-        else
+        else {
             this.props.relayMessage(validCheck);
+            this.setState({ selectedProduct: product });
+        }
     }
 
     selectProduct(id) {
@@ -115,6 +117,7 @@ class ProductController extends React.Component {
             case 'add':
                 return <React.Fragment>
                     <AddProductForm
+                        product={this.state.selectedProduct}
                         addProduct={this.addProduct}
                         goToList={this.goToList}
                     />

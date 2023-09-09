@@ -129,7 +129,7 @@ class ProductController extends React.Component {
                         sellProduct={this.sellProduct}
                         deleteProduct={this.deleteProduct}
                         goToEdit={this.goToEdit}
-                        return={this.goToList}
+                        goToList={this.goToList}
                     />
                 </React.Fragment>
             case 'edit':

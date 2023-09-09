@@ -4,11 +4,6 @@ import Styles from '../assets/Styles'
 import '../assets/ProductDetails.css'
 import ButtonNavigation from './ButtonNavigation'
 
-const sellButtonStyle = () => ({
-    ...Styles.sellProduct.button,
-    width: '100%'
-})
-
 function ProductDetails(props) { 
     const [input, setInput] = useState(1);
     const { product } = props;
@@ -50,10 +45,14 @@ function ProductDetails(props) {
                 </tr>
             </tbody>
         </table>
-        <div>
-            <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
-            <button style={sellButtonStyle()} onClick={e => props.sellProduct(product.id, input)}>sell</button>
-        </div>
+        {product.quantity ?
+            <div style={Styles.productDetails.div}>
+                <input style={Styles.productDetails.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
+                <button onClick={e => props.sellProduct(product.id, input)}>sell</button>
+            </div>
+            : <></>
+        }
+        
     </section>
 }
 
@@ -62,7 +61,7 @@ ProductDetails.propTypes = {
     sellProduct: PropTypes.func.isRequired,
     deleteProduct: PropTypes.func.isRequired,
     goToEdit: PropTypes.func.isRequired,
-    return: PropTypes.func.isRequired
+    goToList: PropTypes.func.isRequired
 }
 
 export default ProductDetails;

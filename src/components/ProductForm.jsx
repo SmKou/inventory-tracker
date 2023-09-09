@@ -36,7 +36,7 @@ function ProductForm(props) {
             <label>
                 Plant Species:
                 <select name="plant" value={plant} onChange={e => setPlant(e.target.value)}>
-                    {Store.plant.map((plant) => <option value={plant}>{plant}</option>)}
+                    {Store.plant.map((plant) => <option value={plant} key={plant}>{plant}</option>)}
                 </select>
             </label>
             <label>
@@ -46,22 +46,22 @@ function ProductForm(props) {
             <label>
                 Roast:
                 <select name="roast" value={roast} onChange={e => setRoast(e.target.value)}>
-                    {Store.roast.map((roast) => <option value={roast}>{roast}</option>)}
+                    {Store.roast.map((roast) => <option value={roast} key={roast}>{roast}</option>)}
                 </select>
             </label>
             <label>
                 Type:
                 <select name="type" value={type} onChange={e => setType(e.target.value)}>
-                    {Store.type.map((type) => <option value={type}>{type}</option>)}
+                    {Store.type.map((type) => <option value={type} key={type}>{type}</option>)}
                 </select>
             </label>
             <label>
                 Quantity:
-                <input type="number" name="quantity" value={quantity} onInput={e => setQty(e.target.value)} />
+                <input type="number" name="quantity" value={quantity} onInput={e => setQty(parseInt(e.target.value) || 130)} />
             </label>
             <label>
                 Price:
-                <input type="number" name="price" value={price} onInput={e => setPrice(e.target.value)} />
+                <input type="number" name="price" value={price} onInput={e => setPrice(parseInt(e.target.value) || 1)} />
             </label>
             <input type="submit" value={props.submitText} />
         </form>

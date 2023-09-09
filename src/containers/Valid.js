@@ -26,24 +26,26 @@ const Valid = {
             const invalid = {
                 status: false,
                 error: "Invalid Product Details",
-                message: `Please fix the following error(s):\n`
+                message: "Required:"
             }
+            const errors = [];
             for (const key of Object.keys(product)) {
                 switch (key) {
                     case "quantity":
                         if (product[key] < 0)
-                            invalid.message += `• Quantity cannot be less than 0.\n`;
+                            errors.push("quantity > 0");
                         break;
                     case "price":
                         if (product[key] < 1)
-                            invalid.message += `• Cannot sell for less than 1 USD.\n`;
+                            errors.push("price > 0")
                         break;
                     default:
                         if (!product[key])
-                            invalid.message += `• Products require a ${key}.`;
+                            errors.push(key)
                         break;
                 }
             }
+            invalid.message += ' ' + errors.join(", ");
             return invalid;
         }
         else

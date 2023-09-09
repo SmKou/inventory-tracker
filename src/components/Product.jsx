@@ -35,12 +35,8 @@ const productListingStyle = isProductHeader => isProductHeader ?
 
 function Product(props) {
     const [input, setInput] = useState(1);
-    return <div style={productListingStyle(props.id === 'product-header')}>
-        <div
-            className="listing-details"
-            style={Styles.productList.productListing.listingDetails.div}
-            onClick={() => props.selectProduct(props.id)}
-        >
+    return <div className="product-listing" style={productListingStyle(props.id === 'product-header')}>
+        <div className="listing-details" onClick={() => props.selectProduct(props.id)}>
             <span>{props.name}</span>
             <span className="optional-listing">{props.plant}</span>
             <span className="optional-listing">{props.origin}</span>

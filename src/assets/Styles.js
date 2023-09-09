@@ -14,13 +14,15 @@ const Styles = {
     notification: {
         section: {
             width: '100%',
+            height: 'auto',
             minHeight: '66px',
             border: '1px solid #999',
             display: 'flex',
             alignItems: 'center'
         },
         p: {
-            paddingLeft: '1.2rem'
+            paddingLeft: '1.2rem',
+            paddingRight: '1.2rem'
         },
         pStrong: {
             paddingLeft: '1.2rem',
@@ -48,28 +50,24 @@ const Styles = {
                 height: '2.4rem',
                 border: '1px solid #888',
                 display: 'grid',
-                gridTemplateColumns: '1fr 100px'
+                gridTemplateColumns: '1fr 130px'
             },
-            listingDetails: {
-                div: {
-                    width: '100%',
-                    display: 'grid',
-                    gridTemplateColumns: '150px 160px 240px 180px 160px 100px 100px',
-                    rowGap: '6px',
-                    justifyItems: 'start',
-                    alignItems: 'center'
-                },
-                firstOfType: {
-                    paddingLeft: '1.2rem'
-                }
-            },
-            input: { width: '42px' },
+            input: { width: '52px' },
             button: {
                 width: '50px',
-                height: '2.4rem',
+                height: '2.2rem',
                 padding: 0,
                 textAlign: 'center'
             }
+        }
+    },
+    productDetails: {
+        div: {
+            display: 'grid',
+            gridTemplateColumns: '1fr 3fr'
+        },
+        input: {
+            paddingLeft: '1.2rem'
         }
     }
 }

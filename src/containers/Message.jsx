@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
 
+const getMessageColor = (status) => status ? ({ background: 'rgba(0, 255, 0, 0.6)' }) : ({ background: 'rgba(255, 0, 0, 0.6)'})
+
 function Message(props) {
     const ctx = props.context;
     return <>{Object.keys(ctx).length ?
-        <section className="notification">
+        <section className="notification" style={getMessageColor(ctx.status)}>
             {ctx.error !== null || ctx.success !== null ?
                 <>
                     <p><strong>{ctx.error || ctx.success}</strong></p>

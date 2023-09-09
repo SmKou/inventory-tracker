@@ -14,8 +14,8 @@ class ProductController extends React.Component {
             productList: [...Store()],
             selectedProduct: null
         }
+        this.props.relayMessage({});
 
-        
         this.sellProduct = this.sellProduct.bind(this);
         this.addProduct = this.addProduct.bind(this);
         this.selectProduct = this.selectProduct.bind(this);
@@ -23,7 +23,10 @@ class ProductController extends React.Component {
         this.deleteProduct = this.deleteProduct.bind(this);
     }
 
-    goToList = () => this.setState({ page: 'list' })
+    goToList = () => {
+        this.props.relayMessage({});
+        this.setState({ page: 'list' });
+    }
     sellProduct(id, n) {
         console.log("amount", n);
         const { productList } = this.state;
@@ -33,16 +36,21 @@ class ProductController extends React.Component {
         if (validCheck.status) {
             productList[index].quantity -= n;
             this.props.relayMessage({
-                ...validCheck,
+                status: true,
                 success: "Product sold",
-                message: `Sold ${n} lb${n > 1 ? 's' : ''} of ${product.name} for $${product.price * n}.`
+                message: `Sold ${n} lb${n > 1 ? 's' : ''} of ${product.name} for $${product.price * n}. ${!productList[index].quantity ? 'Out of stock.' : ''}`
             });
         }
-        else
+        else {
+            console.log(validCheck.message);
             this.props.relayMessage(validCheck);
+        }
     }
 
-    goToAdd = () => this.setState({ page: 'add' })
+    goToAdd = () => {
+        this.props.relayMessage({});
+        this.setState({ page: 'add' });
+    }
     addProduct(product) {
         const validCheck = Valid.enterable(product);
         if (validCheck.status) {
@@ -64,7 +72,10 @@ class ProductController extends React.Component {
         })
     }
 
-    goToEdit = () => this.setState({ page: 'edit' })
+    goToEdit = () => {
+        this.props.relayMessage({});
+        this.setState({ page: 'edit' });
+    }
     editProduct(product) {
         const validCheck = Valid.custom({
             func: ["exists", "enterable"],

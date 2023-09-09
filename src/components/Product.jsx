@@ -36,20 +36,20 @@ function Product(props) {
         </div>
         <span>{props.id === "product-header" ?
             <></>
-            : <>
-                <input type="number" value={input} onInput={e => setInput(e.target.value)
-                } />
-                <button onClick={e => {
-                    e.preventDefault();
-                    props.sellProduct(props.id, input);
-                }}>sell</button>
-            </>
+            : props.quantity !== 0 ?
+                <>
+                    <input type="number" value={input} onInput={e => setInput(e.target.value)
+                    } />
+                    <button onClick={e => {
+                        e.preventDefault();
+                        props.sellProduct(props.id, input);
+                    }}>sell</button>
+                </>
+                : <></>
         }
         </span>
     </div>
 }
-
-// <input id={id} value={input} onInput={e => setInput(e.target.value)}/>
 
 Product.propTypes = {
     selectProduct: PropTypes.func,

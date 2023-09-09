@@ -10,7 +10,7 @@ const Valid = {
             return {
                 status: false,
                 error: "Invalid Quantity",
-                message: `${product.name} only has ${product.quantity} lbs left.`
+                message: `Cannot sell more than ${qty} lbs.`
             }
         else
             return { status: true }

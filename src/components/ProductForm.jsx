@@ -1,16 +1,32 @@
 import PropTypes from 'prop-types'
-import Styles from '../assets/Styles'
+import { v4 } from 'uuid'
 import Store from '../containers/Store'
 import ButtonNavigation from './ButtonNavigation'
 
 function ProductForm(props) {
+    const handleSubmit = e => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const product = {
+            name: data.get("name"),
+            plant: data.get("plant"),
+            origin: data.get("origin"),
+            roast: data.get("roast"),
+            type: data.get("type"),
+            quantity: data.get("quantity"),
+            price: data.get("price"),
+            id: data.get("id") || v4()
+        };
+        props.onFormSubmit(product)
+    }
     const product = props.product;
+
     return <section>
         <ButtonNavigation buttons={[{
             buttonText: "Back to List",
             handleClick: props.goToList
         }]} />
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <input type="hidden" name="id" value={product ? product.id : ''} />
             <label>
                 Product Name:
@@ -52,9 +68,10 @@ function ProductForm(props) {
 }
 
 ProductForm.propTypes = {
-    goToList: PropTypes.func,
-    submitText: PropTypes.string,
-    handleSubmit: PropTypes.func
+    product: PropTypes.object,
+    goToList: PropTypes.func.isRequired,
+    submitText: PropTypes.string.isRequired,
+    onFormSubmit: PropTypes.func.isRequired
 }
 
 export default ProductForm;

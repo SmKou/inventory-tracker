@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types'
 
-function ProductDetails(props) { }
+function ProductDetails(props) { 
+    const { product } = props;
+    return <section>
+        <h2>{product.name}</h2>
+        
+    </section>
+}
 
 ProductDetails.propTypes = {
     product: PropTypes.object.isRequired,

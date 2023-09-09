@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 
 function ProductList(props) {
-    console.log(props.productList);
     return <section>
         <button className="add-btn" onClick={props.goToAdd}>Add a Coffee</button>
         <Product

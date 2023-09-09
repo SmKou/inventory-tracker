@@ -45,7 +45,7 @@ header h1 {
 .listing-details {
     width: 100%;
     display: grid;
-    grid-template-columns: 150px 150px 220px 180px 160px 100px 100px;
+    grid-template-columns: 150px 160px 240px 180px 160px 100px 100px;
     row-gap: 6px;
     justify-items: start;
     align-items: center;
@@ -72,10 +72,8 @@ header h1 {
 
 .product-listing:first-of-type {
     background: rgba(255, 255, 255, 0.1);
-}
-
-.product-listing:first-of-type span {
-    font-weight: bold;
+    font-family: 'Baumans';
+    font-size: 1.2em;
 }
 
 @media (max-width: 1240px) {

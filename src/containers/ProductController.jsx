@@ -116,7 +116,7 @@ class ProductController extends React.Component {
                 return <React.Fragment>
                     <AddProductForm
                         addProduct={this.addProduct}
-                        return={this.goToList}
+                        goToList={this.goToList}
                     />
                 </React.Fragment>
             case 'view':
@@ -134,7 +134,7 @@ class ProductController extends React.Component {
                     <EditProductForm
                         product={this.state.selectedProduct}
                         editProduct={this.editProduct}
-                        return={this.goToList}
+                        goToList={this.goToList}
                     />
                 </React.Fragment>
             default:

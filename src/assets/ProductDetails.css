@@ -1,0 +1,19 @@
+th {
+    width: 120px;
+    font-family: 'Baumans';
+    font-size: 1.3em;
+}
+
+td {
+    width: 180px;
+}
+
+td button {
+    width: 100%;
+}
+
+tbody th,
+tbody td {
+    border: 1px solid #ccc;
+    text-align: left;
+}

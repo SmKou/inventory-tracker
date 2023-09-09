@@ -1,5 +1,7 @@
+import '../assets/Product.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import Styles from '../assets/Styles'
 
 const getQuantity = (qty) => {
     if (qty > 0)
@@ -22,10 +24,23 @@ const getPrice = (price) => {
         return "Price"
 }
 
+const productListingStyle = isProductHeader => isProductHeader ?
+    ({
+        ...Styles.productList.productListing.div,
+        background: 'rgba(255, 255, 255, 0.1)',
+        fontFamily: 'Baumans',
+        fontSize: '1.3em'
+    })
+    : Styles.productList.productListing.div
+
 function Product(props) {
     const [input, setInput] = useState(1);
-    return <div className="product-listing">
-        <div className="listing-details" onClick={() => props.selectProduct(props.id)}>
+    return <div style={productListingStyle(props.id === 'product-header')}>
+        <div
+            className="listing-details"
+            style={Styles.productList.productListing.listingDetails.div}
+            onClick={() => props.selectProduct(props.id)}
+        >
             <span>{props.name}</span>
             <span className="optional-listing">{props.plant}</span>
             <span className="optional-listing">{props.origin}</span>
@@ -34,13 +49,14 @@ function Product(props) {
             <span>{getQuantity(props.quantity)}</span>
             <span>{getPrice(props.price)}</span>
         </div>
+        <style>{
+        }</style>
         <span>{props.id === "product-header" ?
             <></>
             : props.quantity !== 0 ?
                 <>
-                    <input type="number" value={input} onInput={e => setInput(e.target.value)
-                    } />
-                    <button onClick={e => {
+                    <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
+                    <button style={Styles.sellProduct.button} onClick={e => {
                         e.preventDefault();
                         props.sellProduct(props.id, input);
                     }}>sell</button>

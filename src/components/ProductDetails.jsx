@@ -3,6 +3,16 @@ import PropTypes from 'prop-types'
 import Styles from '../assets/Styles'
 import '../assets/ProductDetails.css'
 
+const sellButtonStyle = () => ({
+    ...Styles.sellProduct.button,
+    width: '100%'
+})
+
+const tdSellStyle = () => ({
+    display: 'grid',
+    gridTemplateColumns: '50px 1fr'
+})
+
 function ProductDetails(props) { 
     const [input, setInput] = useState(1);
     const { product } = props;
@@ -31,7 +41,10 @@ function ProductDetails(props) {
                 </tr>
                 <tr>
                     <th>Quantity</th>
-                    <td colSpan="2">{`${product.quantity} lb${product.quantity > 1 ? 's': ''}`} remaining</td>
+                    <td colSpan="2">{product.quantity > 0 ?
+                        `${product.quantity} lb${product.quantity > 1 ? 's' : ''} remaining`
+                        : "Out of stock"
+                    }</td>
                 </tr>
                 <tr>
                     <th>Price</th>
@@ -40,9 +53,9 @@ function ProductDetails(props) {
             </tbody>
             <tfoot>
                 <tr>
-                    <td>
-                        <input className="sell-ipt" type="number" value={input} onInput={e => setInput(e.target.value) } />
-                        <button className="sell-btn" onClick={e =>  props.sellProduct(props.id, input)}>sell</button>
+                    <td style={tdSellStyle()}>
+                        <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
+                        <button style={sellButtonStyle()} onClick={e => props.sellProduct(product.id, input)}>sell</button>
                     </td>
                     <td><button onClick={props.goToEdit}>Edit Details</button></td>
                     <td><button onClick={() => props.deleteProduct(product.id)}>Delete Product</button></td>

@@ -28,7 +28,6 @@ class ProductController extends React.Component {
         this.setState({ page: 'list' });
     }
     sellProduct(id, n) {
-        console.log("amount", n);
         const { productList } = this.state;
         const index = productList.findIndex(product => product.id === id);
         const product = productList[index];
@@ -70,6 +69,7 @@ class ProductController extends React.Component {
             selectedProduct: selected,
             page: 'view'
         })
+        this.props.relayMessage({});
     }
 
     goToEdit = () => {

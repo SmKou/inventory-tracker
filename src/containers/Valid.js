@@ -1,6 +1,12 @@
 const Valid = {
     sellable: (qty, n) => {
-        if (n < 1)
+        if (qty === 0)
+            return {
+                status: false,
+                error: "Invalid Quantity",
+                message: "This product is out of stock."
+            }
+        else if (n < 1)
             return {
                 status: false,
                 error: "Invalid Quantity",

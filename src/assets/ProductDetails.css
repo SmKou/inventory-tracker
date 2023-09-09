@@ -15,5 +15,6 @@ td button {
 tbody th,
 tbody td {
     border: 1px solid #ccc;
+    padding-left: 0.6rem;
     text-align: left;
 }

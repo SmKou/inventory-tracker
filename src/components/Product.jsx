@@ -56,10 +56,7 @@ function Product(props) {
             : props.quantity !== 0 ?
                 <>
                     <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
-                    <button style={Styles.sellProduct.button} onClick={e => {
-                        e.preventDefault();
-                        props.sellProduct(props.id, input);
-                    }}>sell</button>
+                    <button style={Styles.sellProduct.button} onClick={e => props.sellProduct(props.id, input)}>sell</button>
                 </>
                 : <></>
         }

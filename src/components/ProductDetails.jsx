@@ -9,11 +9,6 @@ const sellButtonStyle = () => ({
     width: '100%'
 })
 
-const tdSellStyle = () => ({
-    display: 'grid',
-    gridTemplateColumns: '50px 1fr'
-})
-
 function ProductDetails(props) { 
     const [input, setInput] = useState(1);
     const { product } = props;
@@ -54,15 +49,11 @@ function ProductDetails(props) {
                     <td colSpan="2">{`$${product.price} per pound`}</td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td style={tdSellStyle()}>
-                        <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
-                        <button style={sellButtonStyle()} onClick={e => props.sellProduct(product.id, input)}>sell</button>
-                    </td>
-                </tr>
-            </tfoot>
         </table>
+        <div>
+            <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
+            <button style={sellButtonStyle()} onClick={e => props.sellProduct(product.id, input)}>sell</button>
+        </div>
     </section>
 }
 

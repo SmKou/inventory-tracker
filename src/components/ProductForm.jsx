@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { v4 } from 'uuid'
+import '../assets/ProductForm.css'
 import Store from '../containers/Store'
 import ButtonNavigation from './ButtonNavigation'
 

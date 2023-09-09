@@ -1,20 +1,22 @@
+table,
+tbody,
+tr {
+    width: 100%
+}
+
+tr {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 th {
-    width: 120px;
     font-family: 'Baumans';
     font-size: 1.3em;
 }
 
+th,
 td {
-    width: 180px;
-}
-
-td button {
-    width: 100%;
-}
-
-tbody th,
-tbody td {
-    border: 1px solid #ccc;
     padding-left: 0.6rem;
     text-align: left;
 }

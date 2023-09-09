@@ -14,6 +14,7 @@ const Styles = {
     notification: {
         section: {
             width: '100%',
+            minHeight: '66px',
             border: '1px solid #999',
             display: 'flex',
             alignItems: 'center'
@@ -37,7 +38,7 @@ const Styles = {
             alignItems: 'center'
         },
         button: {
-            margin: '0 1.2rem'
+            margin: '0 0.6rem'
         }
     },
     productList: {
@@ -62,21 +63,13 @@ const Styles = {
                     paddingLeft: '1.2rem'
                 }
             },
-            span: {
-                width: '100%',
-                textAlign: 'left'
+            input: { width: '42px' },
+            button: {
+                width: '50px',
+                height: '2.4rem',
+                padding: 0,
+                textAlign: 'center'
             }
-        }
-    },
-    sellProduct: {
-        input: {
-            width: '42px'
-        },
-        button: {
-            width: '50px',
-            height: '2.4rem',
-            padding: 0,
-            textAlign: 'center'
         }
     }
 }

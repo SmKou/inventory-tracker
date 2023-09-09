@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import Styles from '../assets/Styles'
 import ButtonNavigation from './ButtonNavigation'
 import Product from './Product'
 

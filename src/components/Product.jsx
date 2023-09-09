@@ -49,14 +49,12 @@ function Product(props) {
             <span>{getQuantity(props.quantity)}</span>
             <span>{getPrice(props.price)}</span>
         </div>
-        <style>{
-        }</style>
         <span>{props.id === "product-header" ?
             <></>
             : props.quantity !== 0 ?
                 <>
-                    <input style={Styles.sellProduct.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
-                    <button style={Styles.sellProduct.button} onClick={e => props.sellProduct(props.id, input)}>sell</button>
+                    <input style={Styles.productList.productListing.input} type="number" value={input} onInput={e => setInput(e.target.value) } />
+                    <button style={Styles.productList.productListing.button} onClick={e => props.sellProduct(props.id, input)}>sell</button>
                 </>
                 : <></>
         }

@@ -1,3 +1,4 @@
+import React from 'react'
 import Styles from '../assets/Styles'
 
 function Header() {

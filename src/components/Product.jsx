@@ -1,3 +1,4 @@
+import React from 'react'
 import '../assets/Product.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'

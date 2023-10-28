@@ -2,6 +2,7 @@
   "name": "inventory-tracker",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://smkou.github.io/inventory-tracker/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
